@@ -1,26 +1,190 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  color-scheme: light dark;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  background-color: #0b0c11;
+  color: #1a1a24;
+  overflow-x: hidden;
 }
+
+/* Glassmorphism helpers */
+.glass-dark {
+  background: rgba(18, 20, 29, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-dark-card {
+  background: rgba(22, 24, 35, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(240, 240, 245, 0.9);
+}
+
+/* Pink Brand Gradient */
+.bg-brand-gradient {
+  background: linear-gradient(135deg, #E6397A 0%, #D81B60 50%, #C2185B 100%);
+}
+
+.bg-brand-gradient-hover:hover {
+  background: linear-gradient(135deg, #F04888 0%, #E62A6F 50%, #D11F61 100%);
+}
+
+.text-gradient-pink {
+  background: linear-gradient(135deg, #FF659F 0%, #E6397A 50%, #D81B60 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-subtle {
+  background: linear-gradient(180deg, #FFFFFF 0%, #A0A5BA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom glow effects */
+.glow-pink-sm {
+  box-shadow: 0 4px 20px -2px rgba(230, 57, 122, 0.35);
+}
+
+.glow-pink-lg {
+  box-shadow: 0 10px 40px -5px rgba(230, 57, 122, 0.45);
+}
+
+.glow-dark-card {
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0C10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2A2D3D;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E6397A;
+}
+
+/* Navbar Lighting Glow & Border Beam System */
+@keyframes navbar-beam-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-navbar-beam {
+  animation: navbar-beam-spin 10s linear infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 4s ease-in-out infinite;
+}
+
+.navbar-lighting-glow {
+  box-shadow: 
+    0 0 25px -2px rgba(230, 57, 122, 0.4),
+    0 0 50px -10px rgba(255, 101, 159, 0.25),
+    0 12px 35px rgba(0, 0, 0, 0.6);
+}
+
+/* Luxury Interactive Micro-animations */
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@keyframes ambient-breathe {
+  0%, 100% {
+    opacity: 0.18;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.32;
+    transform: scale(1.08);
+  }
+}
+
+.animate-float-gentle {
+  animation: float-gentle 6s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 7s ease-in-out infinite;
+}
+
+.animate-ambient-breathe {
+  animation: ambient-breathe 8s ease-in-out infinite;
+}
+
+/* Card hover luxury classes */
+.card-luxury-hover {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card-luxury-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -15px rgba(230, 57, 122, 0.15), 0 10px 20px -5px rgba(0, 0, 0, 0.05);
+  border-color: rgba(230, 57, 122, 0.4);
+}
+
+.card-luxury-dark-hover {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card-luxury-dark-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px -10px rgba(230, 57, 122, 0.25), 0 0 30px -5px rgba(255, 101, 159, 0.2);
+  border-color: rgba(255, 101, 159, 0.5);
+}
+
